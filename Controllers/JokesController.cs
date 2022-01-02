@@ -70,10 +70,11 @@ namespace JokesWebApp.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,JokeQuestion,JokeAnswer")] Joke joke)
+        public async Task<IActionResult> Create([Bind("Id,JokeQuestion,JokeAnswer,Username")] Joke joke)
         {
             if (ModelState.IsValid)
             {
+                joke.Username = User.Identity.Name;
                 _context.Add(joke);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

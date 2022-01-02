@@ -6,6 +6,7 @@
         public string JokeQuestion { get; set; }
         public string JokeAnswer { get; set; }
 
+        public string? Username { get; set; }
         public Joke()
         {
 
